@@ -69,13 +69,20 @@ Success metrics: in-memory persistence is acceptable if boudary is clearn
 - Cost-efficiency
 - Visual Quality
 
-
-
 The pipeline should also be reliable. 
 
 LLMs and generative media tools are non-deterministic, so reliable output requires proper engineering around them. It should not only work for one lucky concept or fail randomly across repeated runs. 
 
-Design the generation flow so the required concepts can be processed consistently, with understandable failure states, validation checks, retries, fallbacks, guardrails, or other safeguards where appropriate. The goal is not to pretend generation is deterministic, but to engineer the system so video quality remains consistently good despite that non-determinism.
+Design the generation flow so the required concepts can be processed:
+
+- consistently
+- with understandable failure states
+- validation checks
+- retries
+- fallbacks
+- guardrails or other safeguards where appropriate.
+
+The goal is not to pretend generation is deterministic, but to engineer the system so video quality remains consistently good despite that non-determinism.
 
 ## Required Chemistry Queries
 
@@ -146,7 +153,7 @@ We will also evaluate whether your generated videos are:
 
 - visually pleasing
 - educationally clear
-- cost-conscious. 
+- cost-conscious.
 
 A strong solution should explain what you optimized for, what each generated artifact roughly costs or would cost in production, and how the backend avoids flaky generation behaviour caused by non-deterministic LLM or media-generation outputs.
 

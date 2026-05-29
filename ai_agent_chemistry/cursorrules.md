@@ -17,6 +17,8 @@ When I complete reviewing and confirm you to execute the plan, it's time to impl
 Implementation:
 - Explain and provide step-by-step details of each directory and each file what you want to do and comment for important ambiguity or info
 - Add/update files
+- Always have tests for the logic
+- Add the evaluate mechanism or model about how to evaluate the response return back by the agent
 
 4. Phase 4: Instruction:
 Instruction:
@@ -40,6 +42,7 @@ Instruction:
 - Attractive (can add more photo to be attractive)
 - Other criteria you think it makes sense
 6. What makes you confused: my prompt, your understanding, etc., please feel free to ask me again to be more clarified.
+7. This project is built specific agentic application that can get client's requirements especially gennerating video from their prompts, so please build this product as an agentic ai application and must have a mechanism to evaluate and fine-tune the output return back from service, having clear metrics/criteria to evaluate them and reason again to optimize the output following the best practice in the market
 
 
 ***
