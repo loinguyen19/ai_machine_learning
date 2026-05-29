@@ -1,0 +1,31 @@
+{
+  "query": "How does the pH scale work?",
+  "topic": "chemistry",
+  "script": {
+    "title": "How the pH Scale Works",
+    "scenes": [
+      {
+        "on_screen_text": "pH measures acidity and basicity",
+        "narration": "The pH scale tells us how acidic or basic a solution is.",
+        "duration_sec": 8
+      },
+      {
+        "on_screen_text": "Scale from 0 to 14",
+        "narration": "Values below seven are acidic, seven is neutral, and above seven are bases.",
+        "duration_sec": 10
+      },
+      {
+        "on_screen_text": "Hydrogen ions matter",
+        "narration": "Acids have more hydrogen ions, while bases have fewer hydrogen ions.",
+        "duration_sec": 10
+      },
+      {
+        "on_screen_text": "Examples: lemon juice, water, soap",
+        "narration": "Lemon juice is acidic, pure water is neutral, and soapy water is basic.",
+        "duration_sec": 10
+      }
+    ]
+  },
+  "duration_sec": 38,
+  "estimated_cost_usd": 0.01
+}
