@@ -2,8 +2,6 @@
 
 Backend prototype for asynchronous chemistry explainer video requests using FastAPI.
 
-This implementation supports exactly the three required challenge queries, exposes job lifecycle APIs, and produces local video artifacts with manifest metadata.
-
 ## Quick Start
 
 ```bash
@@ -21,12 +19,72 @@ PYTHONPATH=. uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 Open API docs at `http://localhost:8000/docs`.
 
+## How To Play Generated Videos
+
+**Why old videos did not play:** previous runs wrote the literal text `placeholder-mp4` (15 bytes) when `ffmpeg` was missing. That is not a valid MP4.
+
+After this fix, the pipeline:
+
+1. renders PNG slides (`Pillow`)
+2. synthesizes narration (`gTTS`, with silent-audio fallback offline)
+3. assembles a real MP4 via `ffmpeg` (system install) or bundled `imageio-ffmpeg`
+
+### Option A — download from API
+
+```bash
+curl -X POST localhost:8000/v1/videos \
+  -H "Content-Type: application/json" \
+  -d '{"query":"How does the pH scale work?","topic":"chemistry"}'
+
+# poll until status=completed
+curl localhost:8000/v1/videos/<job_id>
+
+curl -OJ localhost:8000/v1/videos/<job_id>/artifact
+open ./<job_id>.mp4   # macOS QuickTime
+```
+
+### Option B — open local artifact directly
+
+```bash
+open artifacts/videos/<job_id>.mp4
+```
+
+If playback still fails, install ffmpeg:
+
+```bash
+brew install ffmpeg
+# or rely on pip package imageio-ffmpeg (already in requirements.txt)
+```
+
+## Observe Job State / Logs
+
+Each job now stores an `events` array (also written into the manifest JSON).
+
+```bash
+curl localhost:8000/v1/videos/<job_id> | jq '.events'
+```
+
+Server logs also print structured lines:
+
+```text
+job=<id> status=generating_media step=generating_media Synthesizing narration audio
+```
+
+## Evaluate Success Metrics
+
+```bash
+curl localhost:8000/v1/videos/<job_id>/evaluation
+```
+
+This scores the job against: helpful, consistent, guardrails, explainable, cost-efficient, reliable, educational.
+
 ## API Endpoints
 
 - `POST /v1/videos` - create async generation job
 - `GET /v1/videos` - list jobs
-- `GET /v1/videos/{job_id}` - get job status/details
-- `GET /v1/videos/{job_id}/artifact` - download completed video artifact
+- `GET /v1/videos/{job_id}` - get job status/details + events
+- `GET /v1/videos/{job_id}/artifact` - download completed MP4
+- `GET /v1/videos/{job_id}/evaluation` - quality/cost/reliability report
 - `GET /health` - liveness check
 
 ## Required Queries
@@ -35,68 +93,47 @@ Open API docs at `http://localhost:8000/docs`.
 - `Why do atoms form covalent bonds?`
 - `What is the difference between ionic and covalent bonding?`
 
-## Example Flow
+## Generation Stack & Cost
 
-```bash
-curl -X POST localhost:8000/v1/videos \
-  -H "Content-Type: application/json" \
-  -d '{"query":"How does the pH scale work?","topic":"chemistry"}'
+| Step | Provider | Cost |
+|------|----------|------|
+| Script | Template (default) | $0 |
+| Script | LLM optional (`USE_LLM_SCRIPT=1`) | ~$0.001–0.01 |
+| Slides | Pillow PNG renderer | $0 |
+| Audio | gTTS | $0 |
+| Video | ffmpeg / imageio-ffmpeg | $0 |
 
-curl localhost:8000/v1/videos/<job_id>
-curl -O localhost:8000/v1/videos/<job_id>/artifact
-```
+Cost is computed in `app/generation/cost_calculator.py` and stored per job as `artifact.cost_estimate_usd` + `cost_breakdown`.
 
-## Reliability Features
+## Guardrails (where they live)
 
-- Query allowlist validation for required challenge scope.
-- Structured status transitions from `queued` to terminal states.
-- Bounded retries in worker loop.
-- Script relevance validation against query-specific terms.
-- Deterministic fallback scripts for required concepts.
-- Structured failure fields (`failed_step`, `error_code`, `error_message`).
+- Query allowlist: `app/generation/validators.py` (`validate_query`)
+- Script relevance keywords: `validate_script`
+- Bounded retries + fallback templates: `app/services/video_worker.py`
+- Structured failure fields: `failed_step`, `error_code`, `error_message`
 
-## Cost/Quality Approach
+## Why template-first scripts (not LLM by default)?
 
-- Template-first script generation for consistency and low cost.
-- Deterministic media pipeline with provider boundaries.
-- Estimated cost metadata tracked per job (`cost_estimate_usd`).
-- Local assembly path uses ffmpeg when available and safe placeholder fallback when unavailable.
+For the 90–120 minute challenge scope with exactly 3 fixed queries:
+
+- **Reliability:** templates always pass validation; LLM JSON can fail or drift off-topic
+- **Cost:** $0 vs cents per call
+- **Consistency:** repeatable demos for reviewers
+
+LLM integration is intentionally behind a provider boundary (`ScriptGenerator`) and can be enabled later with `USE_LLM_SCRIPT=1` while keeping templates as fallback.
 
 ## Tests
-
-Run:
 
 ```bash
 PYTHONPATH=. pytest -q tests
 ```
 
-Current suite covers:
-
-- job creation API behavior
-- unknown job handling
-- invalid query failure behavior
-- generation pipeline with mocked assembler
-
 ## Project Structure
 
 See `ARCHITECTURE.md` for lifecycle diagrams and boundaries.
 
-Core app is under `app/`:
-
-- `api/` routes and schemas
-- `domain/` models/exceptions
-- `services/` orchestration and worker
-- `generation/` pipeline + providers + validators
-- `persistence/` repository boundary and in-memory adapter
-- `storage/` artifact handling
-
-## Artifacts
-
-- Generated artifacts: `artifacts/videos/` and `artifacts/manifests/`
-- Committed submission outputs: `submissions/`
-
 ## Known Limitations
 
 - Prototype is single-process and in-memory (no DB/queue broker).
-- Placeholder MP4 fallback is used when ffmpeg is unavailable.
-- LLM/TTS vendors are represented as swappable interfaces, not full provider integrations.
+- gTTS requires network; offline runs use silent WAV fallback.
+- LLM script generation is stubbed/documented, not fully wired in MVP.

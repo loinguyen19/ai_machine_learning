@@ -23,6 +23,15 @@ class VideoArtifact(BaseModel):
     manifest_path: str
     duration_sec: int = 0
     cost_estimate_usd: float = 0.0
+    cost_breakdown: dict[str, Any] | None = None
+
+
+class JobEvent(BaseModel):
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    step: str
+    message: str
+    status: str
+    level: str = "info"
 
 
 class VideoJob(BaseModel):
@@ -38,6 +47,7 @@ class VideoJob(BaseModel):
     error_message: str | None = None
     script: dict[str, Any] | None = None
     artifact: VideoArtifact | None = None
+    events: list[JobEvent] = Field(default_factory=list)
 
     def transition(self, status: JobStatus) -> None:
         self.status = status

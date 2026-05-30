@@ -1,12 +1,11 @@
 from __future__ import annotations
-
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import FileResponse
-
 from app.api.schemas import CreateVideoRequest, CreateVideoResponse, VideoJobResponse
 from app.container import get_job_service
 from app.domain.exceptions import JobNotFoundError
 from app.domain.models import JobStatus
+from app.generation.evaluation import evaluate_job
 
 router = APIRouter(prefix="/v1/videos", tags=["videos"])
 
@@ -50,3 +49,13 @@ async def get_artifact(job_id: str) -> FileResponse:
         raise HTTPException(status_code=409, detail=f"Job is not completed. Current status={job.status.value}")
 
     return FileResponse(job.artifact.video_path, media_type="video/mp4", filename=f"{job.id}.mp4")
+
+
+@router.get("/{job_id}/evaluation")
+async def get_evaluation(job_id: str) -> dict:
+    service = get_job_service()
+    try:
+        job = service.get_job(job_id)
+    except JobNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return evaluate_job(job)

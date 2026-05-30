@@ -1,11 +1,8 @@
 from __future__ import annotations
-
 from datetime import datetime
 from typing import Any
-
 from pydantic import BaseModel, Field
-
-from app.domain.models import JobStatus, VideoArtifact
+from app.domain.models import JobEvent, JobStatus, VideoArtifact
 
 
 class CreateVideoRequest(BaseModel):
@@ -33,3 +30,4 @@ class VideoJobResponse(BaseModel):
     error_message: str | None
     artifact: VideoArtifact | None
     script: dict[str, Any] | None
+    events: list[JobEvent] = Field(default_factory=list)

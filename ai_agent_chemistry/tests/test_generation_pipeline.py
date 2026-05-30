@@ -4,7 +4,7 @@ from app.generation.pipeline import GenerationPipeline
 
 
 class FakeAssembler:
-    def assemble(self, duration_sec: int, output_path: Path) -> None:
+    def assemble(self, work_dir: Path, script: dict, output_path: Path) -> None:
         output_path.write_bytes(b"fake-mp4")
 
 
