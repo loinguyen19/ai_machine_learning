@@ -1,0 +1,4 @@
+The pH scale tells us how acidic or basic a solution is.
+Values below seven are acidic, seven is neutral, and above seven are bases.
+Acids have more hydrogen ions, while bases have fewer hydrogen ions.
+Lemon juice is acidic, pure water is neutral, and soapy water is basic.

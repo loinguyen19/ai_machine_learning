@@ -1,0 +1,98 @@
+{
+  "query": "Why do atoms form covalent bonds?",
+  "topic": "chemistry",
+  "script": {
+    "title": "Why Atoms Form Covalent Bonds",
+    "scenes": [
+      {
+        "on_screen_text": "Atoms seek stable outer shells",
+        "narration": "Atoms form covalent bonds to reach stable electron arrangements.",
+        "duration_sec": 8,
+        "visual": "covalent_shells"
+      },
+      {
+        "on_screen_text": "Covalent means sharing electrons",
+        "narration": "In a covalent bond, atoms share electrons rather than transfer them.",
+        "duration_sec": 10,
+        "visual": "covalent_sharing"
+      },
+      {
+        "on_screen_text": "Shared pairs lower energy",
+        "narration": "Sharing electrons lowers the system energy and makes molecules more stable.",
+        "duration_sec": 10,
+        "visual": "covalent_energy"
+      },
+      {
+        "on_screen_text": "Example: H2 and H2O",
+        "narration": "Hydrogen gas and water are common examples built from covalent bonds.",
+        "duration_sec": 10,
+        "visual": "covalent_examples"
+      }
+    ]
+  },
+  "duration_sec": 38,
+  "estimated_cost_usd": 0.0,
+  "cost_breakdown": {
+    "script_usd": 0.0,
+    "tts_usd": 0.0,
+    "slides_usd": 0.0,
+    "assembly_usd": 0.0,
+    "total_usd": 0.0,
+    "script_source": "template",
+    "tts_provider": "gtts",
+    "slide_provider": "pillow",
+    "scene_count": 4,
+    "narration_chars": 279
+  },
+  "events": [
+    {
+      "timestamp": "2026-05-30T15:48:11.778589Z",
+      "step": "queued",
+      "message": "Worker picked up job",
+      "status": "queued",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-05-30T15:48:11.778712Z",
+      "step": "validating",
+      "message": "Validating query against allowlist",
+      "status": "validating",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-05-30T15:48:11.778744Z",
+      "step": "generating_script",
+      "message": "Generation attempt 1/2",
+      "status": "validating",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-05-30T15:48:11.778941Z",
+      "step": "generating_script",
+      "message": "Generating structured script",
+      "status": "generating_script",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-05-30T15:48:11.779026Z",
+      "step": "generating_media",
+      "message": "Rendering slide images",
+      "status": "generating_media",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-05-30T15:48:11.851329Z",
+      "step": "generating_media",
+      "message": "Synthesizing narration audio",
+      "status": "generating_media",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-05-30T15:48:13.264187Z",
+      "step": "assembling",
+      "message": "Assembling MP4 from slides and audio",
+      "status": "assembling",
+      "level": "info"
+    }
+  ]
+}
