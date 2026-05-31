@@ -1,0 +1,10 @@
+python-dotenv
+langchain_google_genai
+langchain
+langchain_openai
+langchain_mcp_adapters
+mcp
+neo4j
+chromadb
+PyPDF2
+anthropic
