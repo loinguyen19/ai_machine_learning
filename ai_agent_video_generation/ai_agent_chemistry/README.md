@@ -4,20 +4,24 @@ Backend prototype for asynchronous chemistry explainer video requests using Fast
 
 ## Quick Start
 
-```bash
-cd ai_agent_chemistry
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-Run API:
+Virtual environment lives in the **parent folder**: `ai_agent_video_generation/.venv`.
 
 ```bash
-PYTHONPATH=. uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+cd ai_agent_video_generation/ai_agent_chemistry
+make install
+source ../.venv/bin/activate
+make run-api
 ```
 
 Open API docs at `http://localhost:8000/docs`.
+
+You can also run the same targets from `ai_agent_video_generation/`:
+
+```bash
+cd ai_agent_video_generation
+make install
+make run-api
+```
 
 ## How To Play Generated Videos
 
@@ -125,8 +129,19 @@ LLM integration is intentionally behind a provider boundary (`ScriptGenerator`) 
 ## Tests
 
 ```bash
-PYTHONPATH=. pytest -q tests
+make test
 ```
+
+## Makefile Targets
+
+| Target | Description |
+|--------|-------------|
+| `make install` | Create `../.venv` and install `requirements.txt` |
+| `make activate` | Print `source ../.venv/bin/activate` |
+| `make run-api` | Start FastAPI with reload on port 8000 |
+| `make test` | Run `pytest` |
+| `make reinstall` | Remove `.venv` and install fresh |
+| `make clean-venv` | Remove `ai_agent_video_generation/.venv` |
 
 ## Project Structure
 

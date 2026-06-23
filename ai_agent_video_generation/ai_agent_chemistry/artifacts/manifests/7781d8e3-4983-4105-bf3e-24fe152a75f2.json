@@ -1,0 +1,98 @@
+{
+  "query": "How does the pH scale work?",
+  "topic": "chemistry",
+  "script": {
+    "title": "How the pH Scale Works",
+    "scenes": [
+      {
+        "on_screen_text": "pH measures acidity and basicity",
+        "narration": "The pH scale tells us how acidic or basic a solution is.",
+        "duration_sec": 8,
+        "visual": "ph_intro"
+      },
+      {
+        "on_screen_text": "Scale from 0 to 14",
+        "narration": "Values below seven are acidic, seven is neutral, and above seven are bases.",
+        "duration_sec": 10,
+        "visual": "ph_scale"
+      },
+      {
+        "on_screen_text": "Hydrogen ions matter",
+        "narration": "Acids have more hydrogen ions, while bases have fewer hydrogen ions.",
+        "duration_sec": 10,
+        "visual": "ph_ions"
+      },
+      {
+        "on_screen_text": "Examples: lemon juice, water, soap",
+        "narration": "Lemon juice is acidic, pure water is neutral, and soapy water is basic.",
+        "duration_sec": 10,
+        "visual": "ph_examples"
+      }
+    ]
+  },
+  "duration_sec": 38,
+  "estimated_cost_usd": 0.000102,
+  "cost_breakdown": {
+    "script_usd": 0.000102,
+    "tts_usd": 0.0,
+    "slides_usd": 0.0,
+    "assembly_usd": 0.0,
+    "total_usd": 0.000102,
+    "script_source": "llm",
+    "tts_provider": "gtts",
+    "slide_provider": "pillow",
+    "scene_count": 4,
+    "narration_chars": 273
+  },
+  "events": [
+    {
+      "timestamp": "2026-06-23T15:42:43.125119Z",
+      "step": "queued",
+      "message": "Worker picked up job",
+      "status": "queued",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-06-23T15:42:43.125176Z",
+      "step": "validating",
+      "message": "Validating query against allowlist",
+      "status": "validating",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-06-23T15:42:43.125198Z",
+      "step": "generating_script",
+      "message": "Generation attempt 1/2",
+      "status": "validating",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-06-23T15:42:43.125411Z",
+      "step": "generating_script",
+      "message": "Generating structured script",
+      "status": "generating_script",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-06-23T15:42:43.125470Z",
+      "step": "generating_media",
+      "message": "Rendering slide images",
+      "status": "generating_media",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-06-23T15:42:43.198087Z",
+      "step": "generating_media",
+      "message": "Synthesizing narration audio",
+      "status": "generating_media",
+      "level": "info"
+    },
+    {
+      "timestamp": "2026-06-23T15:42:44.831320Z",
+      "step": "assembling",
+      "message": "Assembling MP4 from slides and audio",
+      "status": "assembling",
+      "level": "info"
+    }
+  ]
+}
