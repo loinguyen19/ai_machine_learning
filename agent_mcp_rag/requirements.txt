@@ -1,0 +1,12 @@
+python-dotenv
+langchain
+langchain_google_genai
+langchain_openai
+langchain_mcp_adapters
+mcp
+chromadb
+tavily-python
+pydantic
+Pillow
+requests
+fpdf2

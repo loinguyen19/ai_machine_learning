@@ -1,0 +1,128 @@
+{
+  "clients": {
+    "maria": {
+      "display_name": "Maria Chen",
+      "summary": "Loves Japan, cherry blossom season, vegetarian-friendly food, mid-range budget (~$3k), dislikes crowded group tours.",
+      "tags": ["japan", "vegetarian", "photography", "spring", "mid-budget"]
+    },
+    "james": {
+      "display_name": "James Okafor",
+      "summary": "European city breaks, hiking and photography, seafood lover, flexible budget, prefers autumn, favorites: Lisbon and Swiss Alps.",
+      "tags": ["europe", "hiking", "seafood", "autumn", "photography"]
+    }
+  },
+  "messages": [
+    {
+      "client_id": "maria",
+      "session_id": "maria-2024-03-tokyo",
+      "role": "user",
+      "content": "I'm planning a spring trip to Japan. I loved Tokyo last year but want something quieter with temples and gardens.",
+      "timestamp": "2024-03-10T09:00:00Z",
+      "tags": ["japan", "spring", "temples", "gardens"]
+    },
+    {
+      "client_id": "maria",
+      "session_id": "maria-2024-03-tokyo",
+      "role": "assistant",
+      "content": "Kyoto is ideal for temples and gardens in late March during cherry blossom season. Avoid peak Golden Week crowds if possible. Nishiki Market has great vegetarian street food options.",
+      "timestamp": "2024-03-10T09:01:00Z",
+      "tags": ["kyoto", "cherry-blossom", "vegetarian", "food"]
+    },
+    {
+      "client_id": "maria",
+      "session_id": "maria-2024-03-tokyo",
+      "role": "user",
+      "content": "I'm vegetarian but okay with dashi in broth. Budget is around $3000 for a week including flights from SF.",
+      "timestamp": "2024-03-10T09:05:00Z",
+      "tags": ["vegetarian", "budget", "food"]
+    },
+    {
+      "client_id": "maria",
+      "session_id": "maria-2024-03-tokyo",
+      "role": "assistant",
+      "content": "Noted: vegetarian-friendly with dashi acceptable, $3000 all-in budget. Recommend budget ryokan or boutique hotels in Gion, JR Pass for day trips to Nara, and free temple walks like Fushimi Inari early morning.",
+      "timestamp": "2024-03-10T09:06:00Z",
+      "tags": ["budget", "vegetarian", "kyoto", "itinerary"]
+    },
+    {
+      "client_id": "maria",
+      "session_id": "maria-2024-11-feedback",
+      "role": "user",
+      "content": "The Tokyo trip was amazing but the group bus tour to Mt Fuji felt too rushed. I prefer self-guided walks and local markets.",
+      "timestamp": "2024-11-02T14:00:00Z",
+      "tags": ["tokyo", "dislikes-tours", "markets", "self-guided"]
+    },
+    {
+      "client_id": "maria",
+      "session_id": "maria-2024-11-feedback",
+      "role": "assistant",
+      "content": "I'll avoid packaged group tours for future plans. You enjoy photography at markets — Tsukiji outer market and Nishiki are great fits. Early-morning temple visits work well for your style.",
+      "timestamp": "2024-11-02T14:02:00Z",
+      "tags": ["photography", "markets", "preferences"]
+    },
+    {
+      "client_id": "maria",
+      "session_id": "maria-2025-01-food",
+      "role": "user",
+      "content": "Any good vegetarian ramen or tofu specialties in Japan you'd remember for me?",
+      "timestamp": "2025-01-15T10:00:00Z",
+      "tags": ["vegetarian", "food", "japan"]
+    },
+    {
+      "client_id": "maria",
+      "session_id": "maria-2025-01-food",
+      "role": "assistant",
+      "content": "Try yudofu (tofu hot pot) in Kyoto, sesame ramen at T's Tantan in Tokyo Station, and Buddhist shojin ryori at temples. Matcha sweets at Gion are also a favorite for travelers with your tastes.",
+      "timestamp": "2025-01-15T10:02:00Z",
+      "tags": ["vegetarian", "food", "kyoto", "tokyo"]
+    },
+    {
+      "client_id": "james",
+      "session_id": "james-2024-09-lisbon",
+      "role": "user",
+      "content": "Just got back from Lisbon — loved the coastal walks and seafood. Looking for similar vibes in autumn.",
+      "timestamp": "2024-09-20T18:00:00Z",
+      "tags": ["lisbon", "seafood", "coastal", "autumn"]
+    },
+    {
+      "client_id": "james",
+      "session_id": "james-2024-09-lisbon",
+      "role": "assistant",
+      "content": "Lisbon's Alfama hills and miradouros suit your photography style. For autumn, consider Porto or San Sebastián for seafood pintxos and golden-hour coastal trails.",
+      "timestamp": "2024-09-20T18:03:00Z",
+      "tags": ["porto", "seafood", "photography", "autumn"]
+    },
+    {
+      "client_id": "james",
+      "session_id": "james-2024-10-alps",
+      "role": "user",
+      "content": "Swiss Alps hiking in October was perfect. Moderate trails, not too touristy. Budget is flexible if the experience is worth it.",
+      "timestamp": "2024-10-05T11:00:00Z",
+      "tags": ["swiss-alps", "hiking", "autumn", "budget-flexible"]
+    },
+    {
+      "client_id": "james",
+      "session_id": "james-2024-10-alps",
+      "role": "assistant",
+      "content": "Your preference: moderate alpine hikes, October timing, quality over cost. Lauterbrunnen and Grindelwald first valley trails match well. Book mountain huts early for photography sunrise shots.",
+      "timestamp": "2024-10-05T11:02:00Z",
+      "tags": ["hiking", "alps", "photography", "preferences"]
+    },
+    {
+      "client_id": "james",
+      "session_id": "james-2025-02-europe",
+      "role": "user",
+      "content": "Thinking Croatia or Slovenia next — coastal towns plus day hikes. I eat seafood but also enjoy local wine tastings.",
+      "timestamp": "2025-02-01T16:00:00Z",
+      "tags": ["croatia", "slovenia", "seafood", "hiking", "wine"]
+    },
+    {
+      "client_id": "james",
+      "session_id": "james-2025-02-europe",
+      "role": "assistant",
+      "content": "Slovenia's Lake Bled to Triglav trails plus Piran on the coast gives you both. Istrian wine country near Pula pairs well with seafood. September-October avoids summer cruise crowds.",
+      "timestamp": "2025-02-01T16:03:00Z",
+      "tags": ["slovenia", "croatia", "wine", "seafood", "hiking"]
+    }
+  ]
+}
