@@ -1,6 +1,22 @@
+<p align="center">
+  <img src="assets/readme-cover.png" alt="Holiday Planner Agent — MCP, RAG, and agentic AI trip planning" width="100%">
+</p>
+
 # Holiday Planner Agent
 
 A holiday planning assistant that turns short client briefs into detailed trip plans with personalized recommendations, day-by-day agendas, destination scene previews, and a PDF deliverable.
+
+**Repo context:** This is **project #1** in the [`agentic_ai`](../README.md) collection. Recommended exploration order: **#1 this project** → #2 [Chemistry Video API](../ai_agent_video_generation/ai_agent_chemistry/README.md) → #3 [LangChain Search Agent](../agent_with_tools/README.md).
+
+## How this project fits
+
+| # | Project | Relationship to this planner |
+|---|---------|------------------------------|
+| 1 | **This project** | Flagship agent: LangChain ReAct + MCP tool server, Chroma RAG memory, Tavily search, and structured deliverables (JSON, Markdown, PDF, scene images). |
+| 2 | `ai_agent_chemistry` | Same artifact mindset as #1, but wrapped as a FastAPI service with async jobs, manifests, and evaluation. |
+| 3 | `agent_with_tools` | Minimal LangChain + Tavily search agent — the tool-calling foundation that #1 extends via MCP and RAG. |
+
+See [How the projects relate](../README.md#how-the-projects-relate) in the root README for the conceptual stack diagram (#3 → #1 → #2).
 
 ## Requirements (Original Brief)
 
