@@ -6,7 +6,7 @@
 
 Backend prototype for asynchronous chemistry explainer video requests using FastAPI.
 
-**Repo context:** This is **project #2** in the [`agentic_ai`](../../README.md) collection. Recommended exploration order: #1 [Holiday Planner](../../agent_mcp_rag/README.md) → **#2 this project** → #3 [LangChain agent with tools](../../agent_with_tools/).
+**Repo context:** This is **project #2** in the [`agentic_ai`](../../README.md) collection. Recommended exploration order: #1 [Holiday Planner](../../agent_mcp_rag/README.md) → **#2 this project** → #3 [LangChain Search Agent](../../agent_with_tools/README.md).
 
 ## How this project fits
 
@@ -14,7 +14,7 @@ Backend prototype for asynchronous chemistry explainer video requests using Fast
 |---|---------|------------------------------|
 | 1 | `agent_mcp_rag` | Same agentic mindset: tools, external APIs, and **artifacts on disk** (scenes, PDF). The holiday planner runs as a LangChain agent + MCP server; this project wraps a generation pipeline behind a REST API. |
 | 2 | **This project** | Async job API: script → slides → narration → MP4, with manifests, guardrails, and cost tracking under `artifacts/`. |
-| 3 | `agent_with_tools` | Minimal LangChain + Tavily example — the tool-calling pattern that #1 scales up via MCP. |
+| 3 | `agent_with_tools` | LangChain Search Agent — the tool-calling pattern that #1 scales up via MCP. |
 
 See [How the projects relate](../../README.md#how-the-projects-relate) in the root README for the conceptual stack diagram (#3 → #1 → #2).
 
