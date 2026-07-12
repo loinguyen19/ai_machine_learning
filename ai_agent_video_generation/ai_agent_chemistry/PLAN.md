@@ -41,15 +41,6 @@
 - `GET /v1/videos/{job_id}/artifact` - serve completed MP4.
 - `GET /health` - basic service liveness.
 
-## Time Split (90-120 min target)
-
-- 15 min - plan and API contract.
-- 25 min - project skeleton and domain/repository.
-- 25 min - routes, async runner, status transitions.
-- 20 min - generation pipeline + reliability checks.
-- 15 min - tests and docs polish.
-- 10+ min - manual run for three required queries.
-
 ## Session Success Criteria
 
 - All required three queries complete at least once.

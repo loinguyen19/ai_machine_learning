@@ -1,0 +1,3 @@
+{"ticket": {"account_id": "ACC-1002", "message": "Someone I don't recognize logged into my account, I think it's been hacked."}, "expected_category": "fraud_risk", "note": "account-takeover language must route to fraud team at urgent priority"}
+{"ticket": {"account_id": "ACC-1002", "message": "My card payment keeps getting declined at checkout."}, "expected_category": "payment_issue", "note": "account has a recent chargeback flag; guardrail should force urgent priority"}
+{"ticket": {"account_id": "ACC-1003", "message": "I can't log in, it says my password is wrong even though I reset it."}, "expected_category": "account_access", "note": "soft check — this is a model classification call, not guardrail-enforced"}

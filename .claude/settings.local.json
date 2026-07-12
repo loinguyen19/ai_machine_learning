@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.linkedin.com)",
+      "WebFetch(domain:bjak.my)",
+      "WebSearch",
+      "WebFetch(domain:jobs.ashbyhq.com)",
+      "WebFetch(domain:www.tealhq.com)",
+      "WebFetch(domain:himalayas.app)",
+      "Bash(curl -s -L \"https://jobs.ashbyhq.com/bjakcareer/6a2a0e0b-ae4b-43d8-8716-f8f3a63e65d1\" -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36\")",
+      "Bash(curl -s -L \"https://jobs.ashbyhq.com/bjakcareer/6a2a0e0b-ae4b-43d8-8716-f8f3a63e65d1\" -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36\" -o /private/tmp/claude-501/-Users-Admin-Documents-Study-Loi-AI-Machine-Learning-SE-Repo-machine-learning-agentic-ai/ba81a7b2-1826-42d1-96ed-3df31a550d37/scratchpad/bjak_jd.html)",
+      "Bash(python3 -c ' *)",
+      "Bash(make install *)",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(timeout 90 .venv/bin/python -c ' *)",
+      "Bash(.venv/bin/python -m pytest tests/test_guardrails.py -v)"
+    ]
+  }
+}
