@@ -95,17 +95,25 @@ def review_case(case: dict, llm=None) -> dict:
     evidence = _tool_evidence(messages)
     investigation_summary = str(getattr(messages[-1], "content", "")) if messages else ""
 
-    structured_llm = llm.with_structured_output(KYCDecision)
-    raw_decision = structured_llm.invoke(
-        [
-            ("system", DECISION_SYSTEM_PROMPT),
+    decision_llm = llm.with_structured_output(KYCDecision)
+    decision_agent = create_agent(
+        llm,
+        tools=[],
+        system_prompt=DECISION_SYSTEM_PROMPT,
+        response_format=KYCDecision,
+    )
+    decision_result = decision_llm.invoke(
+        {"messages": [
+            ("system", DECISION_SYSTEM_PROMPT)
             (
                 "user",
                 f"Investigation summary:\n{investigation_summary}\n\n"
                 f"Raw tool evidence:\n{json.dumps(evidence, indent=2)}",
             ),
         ]
+        }
     )
+    raw_decision = decision_result["structured_response"]
     final_decision = apply_kyc_guardrails(raw_decision, evidence)
     elapsed = time.perf_counter() - start
 

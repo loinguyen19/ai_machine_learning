@@ -74,6 +74,12 @@ def triage_ticket(ticket: dict, llm=None) -> dict:
     triage_summary = str(getattr(messages[-1], "content", "")) if messages else ""
 
     structured_llm = llm.with_structured_output(TicketTriage)
+    strucutre_agent = create_agent(
+        llm, 
+        tools=SUPPORT_TOOLS, 
+        system_prompt=DECISION_SYSTEM_PROMPT,
+        response_format=TicketTriage
+        )
     raw_triage = structured_llm.invoke(
         [
             ("system", DECISION_SYSTEM_PROMPT),
@@ -82,7 +88,7 @@ def triage_ticket(ticket: dict, llm=None) -> dict:
                 f"Triage summary:\n{triage_summary}\n\nRaw evidence:\n{json.dumps(evidence, indent=2)}",
             ),
         ]
-    )
+    ) #["structured_response"]
     final_triage = apply_ticket_guardrails(raw_triage, evidence)
     elapsed = time.perf_counter() - start
 
